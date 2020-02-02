@@ -53,7 +53,7 @@ public class Main {
         for (Map.Entry<Integer, Integer> entry : intervalMap.entrySet()) {
             intervalList.add(new Interval(entry.getKey(), entry.getValue()));
         }
-
+        Collections.shuffle(intervalList);
         return intervalList;
     }
 
