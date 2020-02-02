@@ -7,4 +7,4 @@ Complexity of TreeMap O(log(n))
 
 Implemented in Java 11 on Intellij Idea 
 
-Run: java -jar interval.merge-1.0-SNAPSHOT-jar-with-dependencies <number?>
+Run: java -jar interval.merge-1.0-SNAPSHOT-jar-with-dependencies.jar <number?>
