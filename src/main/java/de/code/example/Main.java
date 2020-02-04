@@ -16,6 +16,7 @@ public class Main {
         System.out.println("java -jar interval.merge-1.0-SNAPSHOT-jar-with-dependencies.jar <number?>");
         System.out.println("Empty argument - default example otherwise input number of random intervals");
         if (args.length == 0) {
+            //Default example
             List intervalList = new ArrayList<Interval>();
             intervalList.add(new Interval(25, 30));
             intervalList.add(new Interval(2, 19));
@@ -26,7 +27,7 @@ public class Main {
             try {
                 int numberOfIntervals = Integer.parseInt(args[0]);
                 if (numberOfIntervals > 0)
-                    merge(getIntervalList(numberOfIntervals));
+                    merge(getRandomIntervalList(numberOfIntervals));
                 else System.out.println("Allow only positive number");
             } catch (NumberFormatException e) {
                 throw new NumberFormatException("Input is not number!");
@@ -37,6 +38,7 @@ public class Main {
 
     /**
      * Check merge solution of mergeList and mergeTreemap
+     *
      * @param intervalList
      */
     public static void merge(List intervalList) {
@@ -54,7 +56,8 @@ public class Main {
 
     /**
      * Print lists to output if max size 100
-     * @param list - list to output
+     *
+     * @param list         - list to output
      * @param outputString - other information output for list
      */
     public static void printList(List list, String outputString) {
@@ -68,16 +71,19 @@ public class Main {
      * @param numberOfIntervals - number of intervals
      * @return List of random generated intervals
      */
-    public static List<Interval> getIntervalList(int numberOfIntervals) {
+    public static List<Interval> getRandomIntervalList(int numberOfIntervals) {
         Map<Integer, Integer> intervalMap = new TreeMap<>();
+        //Create TreeMap with unique key
         for (int i = 0; i < numberOfIntervals; i++) {
             int randomPoint = (int) (Math.random() * numberOfIntervals);
             intervalMap.put(randomPoint, (int) (randomPoint + (Math.random() * 10) + 1));
         }
+        //Write from TreeMap in List, ordered by TreeMap key
         List<Interval> intervalList = new ArrayList<>();
         for (Map.Entry<Integer, Integer> entry : intervalMap.entrySet()) {
             intervalList.add(new Interval(entry.getKey(), entry.getValue()));
         }
+        // Shuffle List entries
         Collections.shuffle(intervalList);
         return intervalList;
     }
