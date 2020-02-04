@@ -1,5 +1,5 @@
 # Merge overlapping intervals
-**Description**: Merge overlapping intervals with 2 solutions: Java List through Collections.sort otherwise TreeMap
+**Description**: Function that merge overlapping intervals. This software shows the performance of two different solutions - Collections.sort and TreeMap
 
 **Dependencies**: Apache Maven
 
@@ -11,35 +11,35 @@
 
 Or clone repository in IntelliJ and run Main class or IntervalMergerTest test class.
 
-**Test**
+**Test**:
 To run the Unit Test ```mvn clean package -f pom.xml```.
 
-**Usage**: Jar execute in target folder  
+**Usage**: Execute JAR file in target folder  
 * ```java -jar interval.merge-1.0-SNAPSHOT-jar-with-dependencies.jar <number parameter>```
-  - ```number parameter - number of random generated intervals or without parameters to use default test values (see Main class)```
+  - number parameter - number of random generated intervals or without parameters to use default test values (see Main class)
   
 **Output screenshot:**
   ![](usage.png)
 
 **Fragen**
 1. Laufzeit:  
-Lösung 1 benutzt eine Liste mit der Methode Collections.sort (merge sort) und hat die Komplexität für Collections.sort ```O(n*log(n))``` und anschlißend für die FOR Schleife - ```O(n)```, also ```O(n*log(n))+O(n)```  
+Lösung 1 benutzt eine Liste mit der Methode Collections.sort (merge sort) und hat die Komplexität für Collections.sort ```O(n*log(n))``` und anschließend für die FOR Schleife - ```O(n)```, also ```O(n*log(n))+O(n)```  
 Lösung 2 funktioniert mit TreeMap (red-black tree) und hat die Komplexität beim Einfügen in TreeMap ```O(log(n)) + O(n)``` (inklusive FOR Schleife).
 
-TreeMap basiert auf red-black tree. Es werden Duplikate nicht gespeichert und die Schlüssel werden beim Insert bereits aufsteigend sortiert. Somit wird die Zeit für Sortierung gespart.
+TreeMap basiert auf red-black tree. Die Duplikate werden nicht gespeichert und die Schlüssel werden beim Insert bereits aufsteigend sortiert. Somit wird die Zeit für Sortierung gespart.
 Aus diesem Grund ist die Laufzeit zweiter Lösung optimaler.
 
 2. Robustheit und Speicherverbrauch:  
 Die Robustheit wird durch typisierte Eingangsparameter und optimaler Datenverarbeitung gewährleistet.
 Der Speicherverbrauch hängt von der Größe der Eingabe und ausgewählter Datenstruktur ab. 
-Die Speicher- und Prozessorauslastung bei 10 Millionen Intervallen ist auf folgendem Beispiel dargestellt.
+Die Speicherauslastung bei 10 Millionen Intervallen ist auf folgendem Beispiel dargestellt.
 
 4. Test Ergebnisse  
 
 | Interval Eingabe | List Lösung Dauer| TreeMap Lösung Dauer|
 | --- | ------------- | ------------- |
-| aus dem Beispiel| 35ms  | 2ms  |
-| 1000 zufällig generierte Intervalle | 38ms  | 2ms  |
-| 100.000 zufällig generierte Intervalle | 145ms  | 117ms  |
-| 10.000.000 zufällig generierte Intervalle | 599207ms  | 7277ms  |
+| aus dem Beispiel| 38ms  | 2ms  |
+| 1000 zufällig generierte Intervalle | 44ms  | 2ms  |
+| 100.000 zufällig generierte Intervalle | 120ms  | 72ms  |
+| 10.000.000 zufällig generierte Intervalle | 592442ms  | 6724ms  |
 
