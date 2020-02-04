@@ -12,9 +12,9 @@ import java.util.*;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         System.out.println("java -jar interval.merge-1.0-SNAPSHOT-jar-with-dependencies.jar <number?>");
-        System.out.println("Empty argument - default example otherwise input number of random intervals");
+        System.out.println("    <number> - without parameters to use default test values, otherwise the number of intervals, that should randomly generated");
         if (args.length == 0) {
             //Default example
             List intervalList = new ArrayList<Interval>();
@@ -26,11 +26,13 @@ public class Main {
         } else {
             try {
                 int numberOfIntervals = Integer.parseInt(args[0]);
-                if (numberOfIntervals > 0)
+                if (numberOfIntervals > 0) {
                     merge(getRandomIntervalList(numberOfIntervals));
-                else System.out.println("Allow only positive number");
+                } else {
+                    System.out.println("Allow only positive integer");
+                }
             } catch (NumberFormatException e) {
-                throw new NumberFormatException("Input is not number!");
+                throw new NumberFormatException("Input is not integer!");
             }
         }
 
@@ -41,17 +43,22 @@ public class Main {
      *
      * @param intervalList
      */
-    public static void merge(List intervalList) {
+    public static void merge(List intervalList) throws Exception {
         long start = System.currentTimeMillis();
         printList(intervalList, "Input " + intervalList + "\n");
+
         IntervalMerger intervalMerger = new IntervalMerger();
         List<Interval> resultList = intervalMerger.mergeList(intervalList);
-        printList(resultList, "Result through List " + resultList);
-        System.out.println("Duration through List solution " + (System.currentTimeMillis() - start) + " Millis\n");
+        printList(resultList, "Result with List " + resultList);
+
+        System.out.println("Duration time with List solution " + (System.currentTimeMillis() - start) + " Millis\n");
+
         start = System.currentTimeMillis();
+
         resultList = intervalMerger.mergeTreeMap(intervalList);
-        printList(resultList, "Result through TreeMap " + resultList);
-        System.out.println("Duration through TreeMap solution " + (System.currentTimeMillis() - start) + " Millis\n");
+
+        printList(resultList, "Result with TreeMap " + resultList);
+        System.out.println("Duration time with TreeMap solution " + (System.currentTimeMillis() - start) + " Millis\n");
     }
 
     /**
@@ -71,7 +78,7 @@ public class Main {
      * @param numberOfIntervals - number of intervals
      * @return List of random generated intervals
      */
-    public static List<Interval> getRandomIntervalList(int numberOfIntervals) {
+    public static List<Interval> getRandomIntervalList(int numberOfIntervals) throws Exception {
         Map<Integer, Integer> intervalMap = new TreeMap<>();
         //Create TreeMap with unique key
         for (int i = 0; i < numberOfIntervals; i++) {

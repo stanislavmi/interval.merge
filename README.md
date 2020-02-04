@@ -11,36 +11,35 @@
 
 Or clone repository in IntelliJ and run Main class or IntervalMergerTest test class.
 
+**Test**
+To run the Unit Test ```mvn clean package -f pom.xml```.
 
 **Usage**: Jar execute in target folder  
 * ```java -jar interval.merge-1.0-SNAPSHOT-jar-with-dependencies.jar <number parameter>```
-  - ```number parameter - number of random generated intervals or empty number```
+  - ```number parameter - number of random generated intervals or without parameters to use default test values (see Main class)```
+  
+**Output screenshot:**
   ![](usage.png)
 
 **Fragen**
 1. Laufzeit:  
-Lösung 1 benutzt List mit Methode Collection.sort (merge sort) und hat die Komplexität für Collections.sort ```O(n*log(n)) + FOR Schleife O(n), also O(n*log(n))+O(n)```  
-Lösung 2 funktioniert mit TreeMap (red-black tree) hat die Komplexität beim Einfügen in TreeMap ```O(log(n)) + O(n)``` in FOR Schleife
+Lösung 1 benutzt eine Liste mit der Methode Collections.sort (merge sort) und hat die Komplexität für Collections.sort ```O(n*log(n))``` und anschlißend für die FOR Schleife - ```O(n)```, also ```O(n*log(n))+O(n)```  
+Lösung 2 funktioniert mit TreeMap (red-black tree) und hat die Komplexität beim Einfügen in TreeMap ```O(log(n)) + O(n)``` (inklusive FOR Schleife).
 
-2. Robustheit:  
-Die Robustheit hängt von Größe der Eingabe und von ausgewählter Datenstruktur ab. 
-TreeMap basiert auf red-black tree. Es werden Duplikate nicht gespeichert und die Schlüssel werden bei Insert schon aufsteigend sortiert, so dass man die Sort Methode spart.
-Die zweite Lösung ist schneller.
+TreeMap basiert auf red-black tree. Es werden Duplikate nicht gespeichert und die Schlüssel werden beim Insert bereits aufsteigend sortiert. Somit wird die Zeit für Sortierung gespart.
+Aus diesem Grund ist die Laufzeit zweiter Lösung optimaler.
 
-3. Speicherverbrauch:  
-Bei Steigerung der Interval Anzahl verlangsammt die Laufzeit und vergrößert sich Arbeitspeicher.
-Merge von 10 Millionen Datensätzen verursachen durch List Lösung die CPU Auslastung und es wird mehr Arbeitspeicher verbraucht. 
-  ![](speicher.png)
+2. Robustheit und Speicherverbrauch:  
+Die Robustheit wird durch typisierte Eingangsparameter und optimaler Datenverarbeitung gewährleistet.
+Der Speicherverbrauch hängt von der Größe der Eingabe und ausgewählter Datenstruktur ab. 
+Die Speicher- und Prozessorauslastung bei 10 Millionen Intervallen ist auf folgendem Beispiel dargestellt.
 
 4. Test Ergebnisse  
 
 | Interval Eingabe | List Lösung Dauer| TreeMap Lösung Dauer|
 | --- | ------------- | ------------- |
 | aus dem Beispiel| 35ms  | 2ms  |
-| 100 zufällig generierte Intervalle | 36ms  | 2ms  |
 | 1000 zufällig generierte Intervalle | 38ms  | 2ms  |
-| 10.000 zufällig generierte Intervalle | 60ms  | 6ms  |
 | 100.000 zufällig generierte Intervalle | 145ms  | 117ms  |
-| 1.000.000 zufällig generierte Intervalle | 2301ms  | 650ms  |
 | 10.000.000 zufällig generierte Intervalle | 599207ms  | 7277ms  |
 

@@ -22,7 +22,7 @@ public class IntervalMerger {
      * @param intervalList - input List of intervals
      * @return resultIntervalList - List overlapping intervals
      */
-    public List<Interval> mergeList(List<Interval> intervalList) {
+    public List<Interval> mergeList(List<Interval> intervalList) throws Exception {
 
         List<Interval> resultIntervalList = new ArrayList<>();
 
@@ -64,7 +64,7 @@ public class IntervalMerger {
      * @param intervalList - input List of intervals
      * @return resultIntervalList - List of overlapping intervals
      */
-    public List<Interval> mergeTreeMap(List<Interval> intervalList) {
+    public List<Interval> mergeTreeMap(List<Interval> intervalList) throws Exception {
         List<Interval> resultIntervalList = new ArrayList<>();
 
         TreeMap<Integer, Integer> intervalMap = new TreeMap<>();
@@ -97,6 +97,4 @@ public class IntervalMerger {
 
         return resultIntervalList;
     }
-
-
 }

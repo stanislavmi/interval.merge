@@ -21,11 +21,15 @@ public class Interval {
 
     /**
      * @param startPoint to set
-     * @param endPoint to set
+     * @param endPoint   to set
      */
-    public Interval(int startPoint, int endPoint) {
-        this.startPoint = startPoint;
-        this.endPoint = endPoint;
+    public Interval(int startPoint, int endPoint) throws Exception {
+        if (endPoint < startPoint) {
+            throw new Exception("End point is bigger than start point!");
+        } else {
+            this.startPoint = startPoint;
+            this.endPoint = endPoint;
+        }
     }
 
     /**

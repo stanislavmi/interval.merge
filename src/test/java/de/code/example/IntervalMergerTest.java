@@ -15,31 +15,34 @@ public class IntervalMergerTest {
             new Interval(14, 23),
             new Interval(4, 8));
 
+    public IntervalMergerTest() throws Exception {
+    }
+
     @Test
-    public void testTreeMap() {
+    public void testTreeMap() throws Exception {
         assertNotEquals(intervalList, new IntervalMerger().mergeTreeMap(intervalList));
     }
 
     @Test
-    public void testList() {
+    public void testList() throws Exception {
         assertNotEquals(intervalList, new IntervalMerger().mergeList(intervalList));
     }
 
     @Test
-    public void testListWithTreeMap() {
+    public void testListWithTreeMap() throws Exception {
         assertEquals(new IntervalMerger().mergeList(intervalList), new IntervalMerger().mergeTreeMap(intervalList));
     }
 
     @Test
-    public void testDurationExecutionTimeForListAndTreeMap() {
+    public void testDurationExecutionTimeForListAndTreeMap() throws Exception {
         long start = System.currentTimeMillis();
         System.out.println("Input " + intervalList + "\n");
         IntervalMerger intervalMerger = new IntervalMerger();
-        System.out.println("Result through List " + intervalMerger.mergeList(intervalList));
-        System.out.println("Duration through List solution " + (System.currentTimeMillis() - start) + " Millis\n");
+        System.out.println("Result with List " + intervalMerger.mergeList(intervalList));
+        System.out.println("Duration time with List solution " + (System.currentTimeMillis() - start) + " Millis\n");
         start = System.currentTimeMillis();
-        System.out.println("Result through TreeMap " + intervalMerger.mergeTreeMap(intervalList));
-        System.out.println("Duration through TreeMap solution " + (System.currentTimeMillis() - start) + " Millis\n");
+        System.out.println("Result time with TreeMap " + intervalMerger.mergeTreeMap(intervalList));
+        System.out.println("Duration time with TreeMap solution " + (System.currentTimeMillis() - start) + " Millis\n");
     }
 
 }
