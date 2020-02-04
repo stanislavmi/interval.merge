@@ -5,7 +5,7 @@ import de.code.example.object.Interval;
 import java.util.*;
 
 /**
- * The IntervalMerger class implements merge of overlapped intervals with two solutions:
+ * The IntervalMerger class implements merge overlapping intervals with two solutions:
  * 1. merge with List Collections.sort by Object Interval startPoint, @see Collections::sort
  * 2. merge with TreeMap
  *
@@ -20,7 +20,7 @@ public class IntervalMerger {
      * implemented on List Collections.sort with Complexity O(n*log(n))
      *
      * @param intervalList - input List of intervals
-     * @return resultIntervalList - List of overlapped intervals
+     * @return resultIntervalList - List overlapping intervals
      */
     public List<Interval> mergeList(List<Interval> intervalList) {
 
@@ -62,7 +62,7 @@ public class IntervalMerger {
      * insert complexity O(log(n))
      *
      * @param intervalList - input List of intervals
-     * @return resultIntervalList - List of overlapped intervals
+     * @return resultIntervalList - List of overlapping intervals
      */
     public List<Interval> mergeTreeMap(List<Interval> intervalList) {
         List<Interval> resultIntervalList = new ArrayList<>();
