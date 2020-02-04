@@ -32,11 +32,11 @@ Aus diesem Grund ist die Laufzeit zweiter Lösung optimaler.
 2. Robustheit und Speicherverbrauch:  
 Die Robustheit wird durch typisierte Eingangsparameter und optimaler Datenverarbeitung gewährleistet.
 Der Speicherverbrauch hängt von der Größe der Eingabe und ausgewählter Datenstruktur ab. 
-Die Speicherauslastung bei 10 Millionen Intervallen ist auf folgendem Beispiel dargestellt.
+Der Speicherverbrauch bei 10 Millionen Intervallen ist auf folgendem Beispiel dargestellt.
 
 4. Test Ergebnisse  
 
-| Interval Eingabe | List Lösung Dauer| TreeMap Lösung Dauer|
+| Interval Eingabe | List| TreeMap|
 | --- | ------------- | ------------- |
 | aus dem Beispiel| 38ms  | 2ms  |
 | 1000 zufällig generierte Intervalle | 44ms  | 2ms  |
