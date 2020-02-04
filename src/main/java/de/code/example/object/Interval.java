@@ -2,32 +2,58 @@ package de.code.example.object;
 
 import java.util.Objects;
 
-//Intervall Object mit start und end Punkt
+/**
+ * Interval object
+ *
+ * @author Stanislav Michel
+ */
 public class Interval {
+
+    /**
+     * Start point of interval
+     */
     private int startPoint;
+
+    /**
+     * End point of interval
+     */
     private int endPoint;
 
+    /**
+     * @param startPoint to set
+     * @param endPoint to set
+     */
     public Interval(int startPoint, int endPoint) {
         this.startPoint = startPoint;
         this.endPoint = endPoint;
     }
 
+    /**
+     * @return current startPoint
+     */
     public int getStartPoint() {
         return startPoint;
     }
 
-    public Interval setStartPoint(int startPoint) {
+    /**
+     * @param startPoint to set
+     */
+    public void setStartPoint(int startPoint) {
         this.startPoint = startPoint;
-        return this;
     }
 
+    /**
+     * @return current endPoint
+     */
     public int getEndPoint() {
         return endPoint;
     }
 
-    public Interval setEndPoint(int endPoint) {
+    /**
+     * @param endPoint to set
+     */
+    public void setEndPoint(int endPoint) {
         this.endPoint = endPoint;
-        return this;
     }
 
     @Override
@@ -37,8 +63,6 @@ public class Interval {
                 ']';
     }
 
-    //Überschriebene default equals und hashCode Klasse, damit man mit diesen Objekten arbeiten kann
-    //z.B. bei Collections Methoden, wo man die Methoden mit Object Argumenten hat
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
