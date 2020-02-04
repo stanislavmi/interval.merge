@@ -27,6 +27,7 @@ public class IntervalMerger {
             if (firstInterval.getEndPoint() < intervalList.get(i).getStartPoint()) {
                 //wenn ja, dann schreiben das aktuelle Intervall in Ergebnis Liste
                 resultInterval.add(intervalList.get(i));
+                firstInterval = intervalList.get(i);
             }
             // anderfalls, wenn im erstem Intervall der letzte Punkt kleiner als der letzte Punkt von aktuellem Intervall
             else if (firstInterval.getEndPoint() < intervalList.get(i).getEndPoint()) {
@@ -51,7 +52,7 @@ public class IntervalMerger {
         List<Interval> resultInterval = new ArrayList<>();
 
         TreeMap<Integer, Integer> intervalMap = new TreeMap<>();
-        intervalList.forEach(a->intervalMap.put(a.getStartPoint(),a.getEndPoint()));
+        intervalList.forEach(a -> intervalMap.put(a.getStartPoint(), a.getEndPoint()));
 
         // Check, ob TreeMap ein oder gar keine Elemente enthält und gibt das raus, falls es die Bedingung stimmt
         if (intervalMap.size() <= 1)
@@ -65,6 +66,7 @@ public class IntervalMerger {
             if (firstInterval.getEndPoint() < entry.getKey()) {
                 //wenn ja, dann schreiben das aktuelle Intervall in Ergebnis Liste
                 resultInterval.add(new Interval(entry.getKey(), entry.getValue()));
+                firstInterval = new Interval(entry.getKey(), entry.getValue());
             }
             // anderfalls, wenn im erstem Intervall der letzte Punkt kleiner als der letzte Punkt von aktuellem Intervall
             else if (firstInterval.getEndPoint() < entry.getValue()) {
